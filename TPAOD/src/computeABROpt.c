@@ -1,11 +1,9 @@
-/*! \file compileBST.c
- *  \brief	   This implements the applyPatch program.
- *  \author    Lucie Pansart
- *  \author    Jean-Louis Roch
+/*! \file computeABROpt.c
+ *  \brief     This implement the creation of optimal binary tree.
+ *  \author    Bin Mohmad Shah Hariz
  *  \version   1.0
- *  \date      30/9/2016
- *  \warning   Usage: compileBST n originalFile 
- *  \copyright GNU Public License.
+ *  \date      09/4/2017
+ *  \warning   Usage: computeABROpt n originalFile 
  */
 
 #include <stdio.h>
@@ -29,7 +27,7 @@ int main (int argc, char *argv[]) {
   FILE *freqFile = NULL ; // File that contains n positive integers defining the relative frequence of dictinary elements 
   
   if(argc != 3){
-    fprintf(stderr, "!!!!! Usage: ./compileBST n  originalFile !!!!!\n");
+    fprintf(stderr, "!!!!! Usage: ./computeABROpt n  originalFile !!!!!\n");
       exit(EXIT_FAILURE); /* indicate failure.*/
   }
 
@@ -100,5 +98,3 @@ int main (int argc, char *argv[]) {
 
   return 0;
 }
-
-

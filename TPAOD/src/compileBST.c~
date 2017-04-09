@@ -14,8 +14,13 @@
 #include <errno.h>
 #include <assert.h>
 #include <string.h>
-#include "BST.h"
 
+int  verify_element_number(int n, FILE *stream);
+void create_element_array(int n);
+static int *array;
+static int element = 0;
+static int BSTroot;
+static int **BSTtree;
 /**
  * Main function
  * \brief Main function
@@ -86,13 +91,10 @@ int main (int argc, char *argv[]) {
      exit(EXIT_FAILURE); /* indicate failure.*/
   }
 
-  create_element_array();
-  initialization_possible_roots();
-  computeABROpt();
-  organise_BSTtree();
-  write_BST_code();
-
-  free_all_allocation();
+  create_element_array(n);
+  for(int i=0; i<n; i++){
+    fprintf(stdout, "%d\n", array[i]);
+  }
 
   // TO BE COMPLETED 
   fclose(freqFile);
@@ -101,4 +103,32 @@ int main (int argc, char *argv[]) {
   return 0;
 }
 
+int verify_element_number(int n, FILE *stream){
+  int temp;
+  int count=0;
+  while( (fscanf(stream,"%i",&temp)) != EOF){
+    count++;
+  }
+  if(count >= n) {
+    element = n;
+    return 0;
+  }else{
+    return -1;
+  }
+}
 
+void create_element_array(int n){
+  array = malloc(n*sizeof(int));
+  BSTtree = malloc(n*sizeof(int*));
+  BSTtree = malloc(2*sizeof(int));
+  for(int i=0; i<n; i++){
+    array[i] = i;
+    BSTtree[i][0] = 1;
+    BSTtree[i][1] = 1;
+  }
+}
+
+void* e( int i ) {
+  assert( (i>=0) && (i<element));
+  return (void*) &(array[i]);
+}
